@@ -1,0 +1,35 @@
+﻿@model StokWeb.Models.Entitiy.StokTabloSatici
+
+@{
+    ViewBag.Title = "Mevcut Stok Guncelle";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h2>Mevcut Stok Guncelle</h2>
+
+@using (Html.BeginForm("MevcutStokGuncelle", "Stok", FormMethod.Post))
+{
+    <div class="form-group">
+        <label>Id</label>
+        @Html.TextBoxFor(k => k.Id, new { @class = "form-control", @readonly = "readonly" })
+        <br />
+        <label>Stok Kodu</label>
+        @Html.TextBoxFor(k => k.StokKodu, new { @class = "form-control" })
+        <br />
+        <label>Stok Adı</label>
+        @Html.TextBoxFor(k => k.StokAdi, new { @class = "form-control" })
+        <br />
+        <label>Kritik Stok Miktarı</label>
+        @Html.TextBoxFor(k => k.KritikStok, new { @class = "form-control" })
+        <br />
+        <label>Güncel Stok Adedi</label>
+        @Html.TextBoxFor(k => k.KalanMiktar, new { @class = "form-control" })
+        <br />
+        <label>Kategori</label>
+        @Html.TextBoxFor(k => k.KategoriNo, new { @class = "form-control", @readonly = "readonly" })
+        <br />
+    </div>
+    <div>
+        <button class="btn btn-success" type="submit">Güncelle</button>
+    </div>
+}

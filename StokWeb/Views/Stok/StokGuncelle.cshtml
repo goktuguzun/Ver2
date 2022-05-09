@@ -1,0 +1,38 @@
+﻿@model StokWeb.Models.Entitiy.StokGirisCikis
+
+@{
+    ViewBag.Title = "StokGuncelle";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h2>StokGuncelle</h2>
+
+@using (Html.BeginForm("StokGuncelle", "Stok", FormMethod.Post))
+{
+<div class="form-group">
+    <label>Id</label>
+    @Html.TextBoxFor(k => k.Id, new { @class = "form-control" })
+    <br />
+    <label>Stok Kodu</label>
+    @Html.TextBoxFor(k => k.StokKod, new { @class = "form-control" })
+    <br />
+    <label>Stok Adı</label>
+    @Html.TextBoxFor(k => k.StokAd, new { @class = "form-control" })
+    <br />
+    <label>Açıklama</label>
+    @Html.TextBoxFor(k => k.Aciklama, new { @class = "form-control" })
+    <br />
+    <label>Tarih</label>
+    @Html.TextBoxFor(k => k.Tarih, new { @class = "form-control" })
+    <br />
+    <label>Adet</label>
+    @Html.TextBoxFor(k => k.Adet, new { @class = "form-control" })
+    <br />
+    <label>Sicil No</label>
+    @Html.TextBoxFor(k => k.Sicil, new { @class = "form-control" })
+    <br />
+</div>
+<div>
+    <button class="btn btn-success" type="submit">Güncelle</button>
+</div>
+}

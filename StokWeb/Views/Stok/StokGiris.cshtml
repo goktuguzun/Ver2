@@ -1,0 +1,33 @@
+﻿
+@model StokWeb.Models.Entitiy.StokGirisCikis
+
+
+@{
+    ViewBag.Title = "StokGirisCikisEkle";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+<h2>Stok Giriş Ekranı</h2>
+
+<form method="post">
+    <div class="form-group">
+        <label for="StokKod">Stok Kodu</label>
+        <input type="text" name="StokKod" required class="form-control" id="StokKod" placeholder="Stok Kodu">
+    </div>
+    <div class="form-group">
+        <label for="StokAd">Stok Adı</label>
+        <input type="text" name="StokAd" required class="form-control" readonly id="StokAd" placeholder="Stok Adı">
+    </div>
+    <div class="form-group">
+        <label for="Açıklama">Kritik Stok Adeti</label>
+        <input type="text" name="Aciklama" required class="form-control" id="Aciklama" placeholder="Açıklama">
+    </div>
+    <div class="form-group">
+        <label for="Açıklama">Kalan Miktar</label>
+        <input type="text" name="KalanMiktar" required class="form-control" id="KalanMiktar" placeholder="Kalan Miktar">
+    </div>
+    <div class="form-group">
+        <label for="Açıklama">Kategori</label>
+        <input type="text" name="Kategori" required class="form-control" id="Kategori" value="Bilgisayar" readonly>
+    </div>
+    <button type="submit" class="btn btn-primary">Stok Girişi</button>
+</form>

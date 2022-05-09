@@ -1,0 +1,34 @@
+﻿@model StokWeb.Models.Entitiy.StokTabloSatici
+
+
+@{
+    ViewBag.Title = "Yeni Stok Giriş";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+
+<h2>Yeni Stok Giriş Ekranı</h2>
+
+<form method="post">
+    <div class="form-group">
+        <label for="StokKod">Stok Kodu</label>
+        <input type="text" name="StokKodu" required class="form-control" id="StokKodu" placeholder="Stok Kodu">
+    </div>
+    <div class="form-group">
+        <label for="StokAd">Stok Adı</label>
+        <input type="text" name="StokAdi" required class="form-control" id="StokAdi" placeholder="Stok Adı">
+    </div>
+    <div class="form-group">
+        <label for="Açıklama">Kritik Stok Adeti</label>
+        <input type="text" name="KritikStok" required class="form-control" id="KritikStok" placeholder="Kritik Stok">
+    </div>
+    <div class="form-group">
+        <label for="Açıklama">Kalan Miktar</label>
+        <input type="text" name="KalanMiktar" required class="form-control" id="KalanMiktar" placeholder="Kalan Miktar">
+    </div>
+    <div class="form-group">
+        <label for="Açıklama">Kategori</label>
+        <input type="text" name="KategoriNo" required class="form-control" id="KategoriNo" value="1" readonly>
+    </div>
+    <button type="submit" class="btn btn-primary">Yeni Stok Girişi Yap</button>
+</form>
