@@ -1,0 +1,364 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="StokTakipModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ArizaliUrun">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StokNo" Type="int" />
+          <Property Name="StokAd" Type="nvarchar" MaxLength="50" />
+          <Property Name="Adet" Type="int" />
+          <Property Name="Aciklama" Type="nvarchar" MaxLength="250" />
+          <Property Name="OnayDurum" Type="nvarchar" MaxLength="50" />
+          <Property Name="Sicil" Type="nvarchar" MaxLength="50" />
+          <Property Name="Tarih" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="KategoriTablo">
+          <Key>
+            <PropertyRef Name="KategoriNo" />
+          </Key>
+          <Property Name="KategoriNo" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Kategori" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Kullanicilar">
+          <Key>
+            <PropertyRef Name="SicilNo" />
+          </Key>
+          <Property Name="SicilNo" Type="int" Nullable="false" />
+          <Property Name="Ad" Type="nvarchar" MaxLength="20" />
+          <Property Name="Soyad" Type="nvarchar" MaxLength="20" />
+          <Property Name="KullaniciTuru" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Servis">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Urun" Type="nvarchar" MaxLength="50" />
+          <Property Name="Gittigitarih" Type="nvarchar" MaxLength="50" />
+          <Property Name="GittigiServis" Type="nvarchar" MaxLength="50" />
+          <Property Name="GeldigiTarih" Type="nvarchar" MaxLength="50" />
+          <Property Name="TedenBolum" Type="nvarchar" MaxLength="50" />
+          <Property Name="Arıza" Type="nvarchar" MaxLength="50" />
+          <Property Name="Durum" Type="nvarchar" MaxLength="50" />
+          <Property Name="SicilNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="YapılanIslem" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="StokGirisCikis">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StokKod" Type="nvarchar" MaxLength="50" />
+          <Property Name="StokAd" Type="nvarchar" MaxLength="50" />
+          <Property Name="Aciklama" Type="nvarchar" MaxLength="50" />
+          <Property Name="Tarih" Type="nvarchar" MaxLength="50" />
+          <Property Name="Adet" Type="int" />
+          <Property Name="Sicil" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="StokTabloSatici">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StokKodu" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="StokAdi" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="KritikStok" Type="int" />
+          <Property Name="KalanMiktar" Type="int" Nullable="false" />
+          <Property Name="KategoriNo" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="WebUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Pass" Type="nvarchar" MaxLength="50" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Surname" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_StokTabloSatici_KategoriTablo">
+          <End Role="KategoriTablo" Type="Self.KategoriTablo" Multiplicity="0..1" />
+          <End Role="StokTabloSatici" Type="Self.StokTabloSatici" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KategoriTablo">
+              <PropertyRef Name="KategoriNo" />
+            </Principal>
+            <Dependent Role="StokTabloSatici">
+              <PropertyRef Name="KategoriNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="StokTakipModelStoreContainer">
+          <EntitySet Name="ArizaliUrun" EntityType="Self.ArizaliUrun" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="KategoriTablo" EntityType="Self.KategoriTablo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Kullanicilar" EntityType="Self.Kullanicilar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Servis" EntityType="Self.Servis" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StokGirisCikis" EntityType="Self.StokGirisCikis" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StokTabloSatici" EntityType="Self.StokTabloSatici" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WebUser" EntityType="Self.WebUser" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_StokTabloSatici_KategoriTablo" Association="Self.FK_StokTabloSatici_KategoriTablo">
+            <End Role="KategoriTablo" EntitySet="KategoriTablo" />
+            <End Role="StokTabloSatici" EntitySet="StokTabloSatici" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="StokTakipModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ArizaliUrun">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StokNo" Type="Int32" />
+          <Property Name="StokAd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Adet" Type="Int32" />
+          <Property Name="Aciklama" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="OnayDurum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Sicil" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Tarih" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="KategoriTablo">
+          <Key>
+            <PropertyRef Name="KategoriNo" />
+          </Key>
+          <Property Name="KategoriNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Kategori" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="StokTabloSatici" Relationship="Self.FK_StokTabloSatici_KategoriTablo" FromRole="KategoriTablo" ToRole="StokTabloSatici" />
+        </EntityType>
+        <EntityType Name="Kullanicilar">
+          <Key>
+            <PropertyRef Name="SicilNo" />
+          </Key>
+          <Property Name="SicilNo" Type="Int32" Nullable="false" />
+          <Property Name="Ad" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Soyad" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="KullaniciTuru" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Servis">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Urun" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Gittigitarih" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="GittigiServis" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="GeldigiTarih" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TedenBolum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Arıza" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Durum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SicilNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="YapılanIslem" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="StokGirisCikis">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StokKod" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="StokAd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Aciklama" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Tarih" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Adet" Type="Int32" />
+          <Property Name="Sicil" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="StokTabloSatici">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StokKodu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="StokAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="KritikStok" Type="Int32" />
+          <Property Name="KalanMiktar" Type="Int32" Nullable="false" />
+          <Property Name="KategoriNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="KategoriTablo" Relationship="Self.FK_StokTabloSatici_KategoriTablo" FromRole="StokTabloSatici" ToRole="KategoriTablo" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK_StokTabloSatici_KategoriTablo">
+          <End Role="KategoriTablo" Type="Self.KategoriTablo" Multiplicity="0..1" />
+          <End Role="StokTabloSatici" Type="Self.StokTabloSatici" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KategoriTablo">
+              <PropertyRef Name="KategoriNo" />
+            </Principal>
+            <Dependent Role="StokTabloSatici">
+              <PropertyRef Name="KategoriNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="StokTakipEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ArizaliUrun" EntityType="Self.ArizaliUrun" />
+          <EntitySet Name="KategoriTablo" EntityType="Self.KategoriTablo" />
+          <EntitySet Name="Kullanicilar" EntityType="Self.Kullanicilar" />
+          <EntitySet Name="Servis" EntityType="Self.Servis" />
+          <EntitySet Name="StokGirisCikis" EntityType="Self.StokGirisCikis" />
+          <EntitySet Name="StokTabloSatici" EntityType="Self.StokTabloSatici" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <AssociationSet Name="FK_StokTabloSatici_KategoriTablo" Association="Self.FK_StokTabloSatici_KategoriTablo">
+            <End Role="KategoriTablo" EntitySet="KategoriTablo" />
+            <End Role="StokTabloSatici" EntitySet="StokTabloSatici" />
+          </AssociationSet>
+          <EntitySet Name="WebUser" EntityType="StokTakipModel.WebUser" />
+        </EntityContainer>
+        <EntityType Name="WebUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Pass" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="StokTakipModelStoreContainer" CdmEntityContainer="StokTakipEntities1">
+          <EntitySetMapping Name="ArizaliUrun">
+            <EntityTypeMapping TypeName="StokTakipModel.ArizaliUrun">
+              <MappingFragment StoreEntitySet="ArizaliUrun">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="StokNo" ColumnName="StokNo" />
+                <ScalarProperty Name="StokAd" ColumnName="StokAd" />
+                <ScalarProperty Name="Adet" ColumnName="Adet" />
+                <ScalarProperty Name="Aciklama" ColumnName="Aciklama" />
+                <ScalarProperty Name="OnayDurum" ColumnName="OnayDurum" />
+                <ScalarProperty Name="Sicil" ColumnName="Sicil" />
+                <ScalarProperty Name="Tarih" ColumnName="Tarih" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KategoriTablo">
+            <EntityTypeMapping TypeName="StokTakipModel.KategoriTablo">
+              <MappingFragment StoreEntitySet="KategoriTablo">
+                <ScalarProperty Name="KategoriNo" ColumnName="KategoriNo" />
+                <ScalarProperty Name="Kategori" ColumnName="Kategori" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kullanicilar">
+            <EntityTypeMapping TypeName="StokTakipModel.Kullanicilar">
+              <MappingFragment StoreEntitySet="Kullanicilar">
+                <ScalarProperty Name="SicilNo" ColumnName="SicilNo" />
+                <ScalarProperty Name="Ad" ColumnName="Ad" />
+                <ScalarProperty Name="Soyad" ColumnName="Soyad" />
+                <ScalarProperty Name="KullaniciTuru" ColumnName="KullaniciTuru" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Servis">
+            <EntityTypeMapping TypeName="StokTakipModel.Servis">
+              <MappingFragment StoreEntitySet="Servis">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Urun" ColumnName="Urun" />
+                <ScalarProperty Name="Gittigitarih" ColumnName="Gittigitarih" />
+                <ScalarProperty Name="GittigiServis" ColumnName="GittigiServis" />
+                <ScalarProperty Name="GeldigiTarih" ColumnName="GeldigiTarih" />
+                <ScalarProperty Name="TedenBolum" ColumnName="TedenBolum" />
+                <ScalarProperty Name="Arıza" ColumnName="Arıza" />
+                <ScalarProperty Name="Durum" ColumnName="Durum" />
+                <ScalarProperty Name="SicilNo" ColumnName="SicilNo" />
+                <ScalarProperty Name="YapılanIslem" ColumnName="YapılanIslem" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StokGirisCikis">
+            <EntityTypeMapping TypeName="StokTakipModel.StokGirisCikis">
+              <MappingFragment StoreEntitySet="StokGirisCikis">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="StokKod" ColumnName="StokKod" />
+                <ScalarProperty Name="StokAd" ColumnName="StokAd" />
+                <ScalarProperty Name="Aciklama" ColumnName="Aciklama" />
+                <ScalarProperty Name="Tarih" ColumnName="Tarih" />
+                <ScalarProperty Name="Adet" ColumnName="Adet" />
+                <ScalarProperty Name="Sicil" ColumnName="Sicil" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StokTabloSatici">
+            <EntityTypeMapping TypeName="StokTakipModel.StokTabloSatici">
+              <MappingFragment StoreEntitySet="StokTabloSatici">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="StokKodu" ColumnName="StokKodu" />
+                <ScalarProperty Name="StokAdi" ColumnName="StokAdi" />
+                <ScalarProperty Name="KritikStok" ColumnName="KritikStok" />
+                <ScalarProperty Name="KalanMiktar" ColumnName="KalanMiktar" />
+                <ScalarProperty Name="KategoriNo" ColumnName="KategoriNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="StokTakipModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WebUser">
+            <EntityTypeMapping TypeName="StokTakipModel.WebUser">
+              <MappingFragment StoreEntitySet="WebUser">
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Pass" ColumnName="Pass" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
