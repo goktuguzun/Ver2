@@ -81,28 +81,29 @@
             <tbody>
                 @foreach (var i in Model)
                 {
-                <tr>
-                    <td>@i.id</td>
-                    <td>@i.Urun</td>
-                    <td>@i.Gittigitarih</td>
-                    <td>@i.GittigiServis</td>
-                    <td>@i.GeldigiTarih</td>
-                    <td>@i.TedenBolum</td>
-                    <td>@i.Arıza</td>
-                    <td>@i.Durum</td>
-                    <td>@i.SicilNo</td>
-                    <td>@i.YapılanIslem</td>
-                    <td>
-                        <a href="/Servis/ServisGuncelle/@i.id" type="button" class="btn btn-warning">Düzenle</a>
-                    </td>
-                    <td>
-                        @Html.ActionLink("Sil", "ServisSil", new { id = i.id }, new { @class = "btn btn-danger", onclick = "return confirm ('Silmek İstediğinize Emin Misiniz ?')" })
+                    <tr>
+                        <td>@i.id</td>
+                        <td>@i.Urun</td>
+                        <td>@i.Gittigitarih</td>
+                        <td>@i.GittigiServis</td>
+                        <td>@i.GeldigiTarih</td>
+                        <td>@i.TedenBolum</td>
+                        <td>@i.Arıza</td>
+                        <td>@i.Durum</td>
+                        <td>@i.SicilNo</td>
+                        <td>@i.YapılanIslem</td>
+                        <td>
+                            <a href="/Servis/Guncelle/@i.id" type="button" class="btn btn-warning">Düzenle</a>
+                        </td>
+                        <td>
+                            @Html.ActionLink("Sil", "ServisSil", new { id = i.id }, new { @class = "btn btn-danger", onclick = "return confirm ('Silmek İstediğinize Emin Misiniz ?')" })
 
-                    </td>
-                </tr>
+                        </td>
+                    </tr>
                 }
             </tbody>
         </table>
+        <a href="/Servis/Ekle/" type="button" class="btn btn-success">Servise Ürün Gönder</a>
     </div>
     <script>
         $(document).ready(function () {

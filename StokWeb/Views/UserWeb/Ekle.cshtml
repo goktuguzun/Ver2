@@ -1,0 +1,31 @@
+﻿@model StokWeb.Models.Entitiy.Kullanicilar
+
+
+@{
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+
+<h2>WEb Modülü Kullanıcı Ekleme Ekranı</h2>
+
+<form method="post">
+    <div class="form-group">
+        <label for="UserName">Kullanıcı Adı</label>
+        <input type="text" name="UserName" required class="form-control" id="UserName" placeholder="Kullanıcı Adı">
+    </div>
+    <div class="form-group">
+        <label for="pass">Şifre</label>
+        <input type="password" name="pass" required class="form-control" id="pass" placeholder="Şifre">
+    </div>
+    <div class="form-group">
+        <label for="Name">Ad</label>
+        <input type="text" name="Name" required class="form-control" id="Name" placeholder="Ad">
+    </div>
+    <div class="form-group">
+        <label for="Surname">Soyad</label>
+        <input type="text" name="Surname" required class="form-control" id="Surname" placeholder="Soyad">
+    </div>
+    <br />
+
+    <button type="submit" class="btn btn-success">Yeni Kullanıcı Ekle</button>
+</form>

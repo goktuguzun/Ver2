@@ -1,5 +1,5 @@
 ﻿@using StokWeb.Models.Entitiy
-@model List<Kullanicilar>
+@model List<StokTabloSatici>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/Layout.cshtml";
@@ -24,61 +24,52 @@
 </head>
 <body>
     <div class="container">
-        <h2>Stok Modülü Kullanıcılar</h2>
-
+        <h2>Kritik Stok</h2>
         <table class="table table-fluid" id="myTable">
-
             <thead>
                 <tr>
                     <th class="th-sm">
-                        Sicil No
+                        Id
 
                     </th>
                     <th class="th-sm">
-                        Adı
+                        Stok Kodu
 
                     </th>
                     <th class="th-sm">
-                        Soyadı
+                        Stok Adı
 
                     </th>
                     <th class="th-sm">
-                        Kullanıcı Türü
+                        Kritik Stok
 
                     </th>
                     <th class="th-sm">
-
+                        Kalan Miktar
 
                     </th>
                     <th class="th-sm">
-
+                        Kategori
 
                     </th>
+                    
                 </tr>
             </thead>
             <tbody>
                 @foreach (var i in Model)
                 {
                     <tr>
-                        <td>@i.SicilNo</td>
-                        <td>@i.Ad</td>
-                        <td>@i.Soyad</td>
-                        <td>@i.KullaniciTuru</td>
-                        <td>
-                            <a href="/UserStok/Guncelle/@i.SicilNo" type="button" class="btn btn-warning">Düzenle</a>
-
-                        </td>
-                        <td>
-                            @Html.ActionLink("Sil", "Sil", new { id = i.SicilNo }, new { @class = "btn btn-danger", onclick = "return confirm ('Silmek İstediğinize Emin Misiniz ?')" })
-
-                        </td>
+                        <td>@i.Id</td>
+                        <td>@i.StokKodu</td>
+                        <td>@i.StokAdi</td>
+                        <td>@i.KritikStok</td>
+                        <td>@i.KalanMiktar</td>
+                        <td>@i.KategoriTablo.Kategori</td>
+                       
                     </tr>
                 }
             </tbody>
         </table>
-        <hr />
-        <a href="/UserStok/Ekle/" type="button" class="btn btn-success">Kullanıcı Ekle</a>
-
     </div>
     <script>
         $(document).ready(function () {

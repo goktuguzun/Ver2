@@ -1,0 +1,64 @@
+﻿@model StokWeb.Models.Entitiy.Servis
+
+@{
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h2>StokGuncelle</h2>
+
+@using (Html.BeginForm("Guncelle", "Servis", FormMethod.Post))
+{
+    <div class="form-group">
+        <label>Id</label>
+        @Html.TextBoxFor(k => k.id, new { @class = "form-control", @readonly= "readonly" })
+        <br />
+        <label>Ürün</label>
+        @Html.TextBoxFor(k => k.Urun, new { @class = "form-control" })
+        <br />
+        <label>Servise Gittiği Tarih</label>
+        @Html.TextBoxFor(k => k.Gittigitarih, new { @class = "form-control", @type = "date" })
+        <br />
+        <label>Gittiği Servis</label>
+        @Html.TextBoxFor(k => k.GittigiServis, new { @class = "form-control"})
+        <br />
+        <label>Servisten Geldiği Tarih</label>
+        @Html.TextBoxFor(k => k.GeldigiTarih, new { @class = "form-control", @type = "date" })
+        <br />
+        <label>Teslim Eden Bölüm / Kişi</label>
+        @Html.TextBoxFor(k => k.TedenBolum, new { @class = "form-control" })
+        <br />
+        <label>Durum</label>
+        @Html.DropDownList("Durum",
+               new List<SelectListItem> {
+                   new SelectListItem {
+                      Text="Serviste",
+                      Value="Serviste",
+
+                   },
+                   new SelectListItem {
+                      Text="Gönderildi",
+                      Value="Gönderildi",
+
+                   },
+                    new SelectListItem {
+                      Text="Geldi",
+                      Value="Geldi",
+
+                   },
+
+               }, "Servisteki Ürünün Durumunu Seçiniz", new { @class = "form-control" })
+        <br />
+        <label>Arıza </label>
+        @Html.TextBoxFor(k => k.Arıza, new { @class = "form-control" })
+        <br />
+        <label>Sicil No</label>
+        @Html.TextBoxFor(k => k.SicilNo, new { @class = "form-control" })
+        <br />
+        <label>Yapılşan İşlem</label>
+        @Html.TextBoxFor(k => k.YapılanIslem, new { @class = "form-control" })
+        <br />
+    </div>
+    <div>
+        <button class="btn btn-success" type="submit">Güncelle</button>
+    </div>
+}

@@ -25,5 +25,39 @@ namespace StokWeb.Controllers
             return RedirectToAction("Index");
 
         }
+        [HttpGet]
+        public ActionResult Ekle()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Ekle(Servis s)
+        {
+            db.Servis.Add(s);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+        [HttpGet]
+        public ActionResult Guncelle(int id)
+        {
+            var ser = db.Servis.Find(id);
+            return View(ser);
+        }
+
+        [HttpPost]
+        public ActionResult Guncelle(Servis s)
+        {
+            var stok = db.Servis.Find(s.id);
+            stok.SicilNo = s.SicilNo;
+            stok.Durum = s.Durum;
+            stok.TedenBolum = s.TedenBolum;
+            stok.Arıza = s.Arıza;
+            stok.Gittigitarih = s.Gittigitarih;
+            stok.GeldigiTarih = s.GeldigiTarih;
+            stok.GittigiServis = s.GittigiServis;
+            stok.YapılanIslem = s.YapılanIslem;
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
     }
 }

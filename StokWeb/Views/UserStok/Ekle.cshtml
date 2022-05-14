@@ -1,0 +1,44 @@
+﻿@model StokWeb.Models.Entitiy.Kullanicilar
+
+
+@{
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+
+<h2>Yeni Kullanıcı Ekleme Ekranı</h2>
+
+<form method="post">
+    <div class="form-group">
+        <label for="Sicil No">Sicil No</label>
+        <input type="text" name="SicilNo" required class="form-control" id="SicilNo" placeholder="Sicil No">
+    </div>
+    <div class="form-group">
+        <label for="Ad">Ad</label>
+        <input type="text" name="ad" required class="form-control" id="StokAdi" placeholder="Ad">
+    </div>
+    <div class="form-group">
+        <label for="Açıklama">Soyad</label>
+        <input type="text" name="Soyad" required class="form-control" id="Soyad" placeholder="Soyad">
+    </div>
+    <div class="form-group">
+        <label for="Açıklama">Kullanıcı Türü</label>
+        @Html.DropDownList("KullaniciTuru",
+                new List<SelectListItem> {
+                    new SelectListItem {
+                       Text="Admin",
+                       Value="Admin",
+
+                    },
+                    new SelectListItem {
+                       Text="Standart",
+                       Value="Standart",
+
+                    },
+
+                }, "Kullanıcı Türünü Seçiniz", new { @class = "form-control" })
+    </div>
+    <br />
+   
+    <button type="submit" class="btn btn-success">Yeni Kullanıcı Ekle</button>
+</form>

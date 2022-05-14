@@ -1,0 +1,43 @@
+﻿@model StokWeb.Models.Entitiy.Kullanicilar
+
+@{
+    ViewBag.Title = "Mevcut Stok Guncelle";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h2>Stok Modülü Kullanıcı Guncelle</h2>
+
+@using (Html.BeginForm("Guncelle", "UserStok", FormMethod.Post))
+{
+    <div class="form-group">
+        <label>Sicil No</label>
+        @Html.TextBoxFor(k => k.SicilNo, new { @class = "form-control", @readonly = "readonly" })
+        <br />
+        <label>Ad</label>
+        @Html.TextBoxFor(k => k.Ad, new { @class = "form-control" })
+        <br />
+        <label>Soyad</label>
+        @Html.TextBoxFor(k => k.Soyad, new { @class = "form-control" })
+        <br />
+        <label>Kullanıcı Türü</label>
+        @Html.DropDownList("KullaniciTuru",
+                 new List<SelectListItem> {
+                     new SelectListItem {
+                        Text="Admin",
+                        Value="Admin",
+
+                     },
+                     new SelectListItem {
+                        Text="Standart",
+                        Value="Standart",
+
+                     },
+
+                 }, "Kullanıcı Türünü Seçiniz", new { @class = "form-control" })
+        <br />
+
+    </div>
+    <div>
+        <button class="btn btn-success" type="submit">Güncelle</button>
+    </div>
+}

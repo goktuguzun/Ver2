@@ -1,0 +1,70 @@
+﻿@model StokWeb.Models.Entitiy.Kullanicilar
+
+
+@{
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+
+<h2>Servise Ürün Gönder</h2>
+
+<form method="post">
+    <div class="form-group">
+        <label for="Sicil No">Ürün</label>
+        <input type="text" name="Urun" required class="form-control" id="Urun" placeholder="Ürün">
+    </div>
+    <div class="form-group">
+        <label for="Ad">Servise Gittigi Tarih</label>
+        <input type="date" name="Gittigitarih" class="form-control" id="Gittigitarih" placeholder="Servise Gittigi Tarih">
+    </div>
+    <div class="form-group">
+        <label for="Ad">Servisten Geldigi Tarih</label>
+        <input type="date" name="GeldigiTarih" class="form-control" id="GeldigiTarih" placeholder="Servisten Geldigi Tarih">
+    </div>
+    <div class="form-group">
+        <label for="Ad">Teslim Eden Bolum</label>
+        <input type="text" name="TedenBolum" class="form-control" id="TedenBolum" placeholder="Teslim Eden Bolum">
+    </div>
+    <div class="form-group">
+        <label for="Ad">Gönderilen Servis</label>
+        <input type="text" required name="GittigiServis" class="form-control" id="GittigiServis" placeholder="Gönderilen Servis">
+    </div>
+
+    <div class="form-group">
+        <label for="Ad">Arıza</label>
+        <input type="text" required name="Arıza" class="form-control" id="Arıza" placeholder="Arıza">
+    </div>
+    <div class="form-group">
+        <label for="Açıklama">Durum</label>
+        @Html.DropDownList("Durum",
+                new List<SelectListItem> {
+                    new SelectListItem {
+                       Text="Serviste",
+                       Value="Serviste",
+
+                    },
+                    new SelectListItem {
+                       Text="Gönderildi",
+                       Value="Gönderildi",
+
+                    },
+                     new SelectListItem {
+                       Text="Geldi",
+                       Value="Geldi",
+
+                    },
+
+                }, "Servisteki Ürünün Durumunu Seçiniz", new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        <label for="Ad">Sicil No</label>
+        <input type="text" name="SicilNo" class="form-control" id="SicilNo" placeholder="Sicil No">
+    </div>
+    <div class="form-group">
+        <label for="Ad">Yapılan Islem</label>
+        <input type="text" name="YapılanIslem" class="form-control" id="YapılanIslem" placeholder="Yapılan Islem">
+    </div>
+    <br />
+
+    <button type="submit" class="btn btn-success">Servise Ürün Ekle</button>
+</form>

@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\guzun\Downloads\wetransfer_stokweb_2022-05-04_2159\StokWeb\StokWeb\Models\Entitiy\DbStok.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\goktu\source\repos\Ver2\StokWeb\Models\Entitiy\DbStok.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

@@ -69,15 +69,15 @@
                     <td>@i.Surname</td>
                     <td>@i.UserName</td>
                     <td>
-                        <a href="/WebUser/Guncelle/@i.Id" type="button" class="btn btn-warning">Düzenle</a>
+                        <a href="/UserWeb/Guncelle/@i.Id" type="button" class="btn btn-warning">Düzenle</a>
 
                     </td>
                     <td>
-                        @Html.ActionLink("Sil", "StokUserSil", new { id = i.Id }, new { @class = "btn btn-danger", onclick = "return confirm ('Silmek İstediğinize Emin Misiniz ?')" })
+                        @Html.ActionLink("Sil", "Sil", new { id = i.Id }, new { @class = "btn btn-danger", onclick = "return confirm ('Silmek İstediğinize Emin Misiniz ?')" })
 
                     </td>
                     <td>
-                        @Html.ActionLink("Şifre Sıfırla", "StokUserSil", new { id = i.Id }, new { @class = "btn btn-primary", onclick = "return confirm ('Silmek İstediğinize Emin Misiniz ?')" })
+                        @Html.ActionLink("Şifre Sıfırla", "SifreSifirla", new { id = i.Id }, new { @class = "btn btn-primary", onclick = "return confirm ('Silmek İstediğinize Emin Misiniz ?')" })
 
                     </td>
                 </tr>
@@ -85,7 +85,7 @@
             </tbody>
         </table>
         <hr />
-        <a href="/WebUser/Ekle/" type="button" class="btn btn-success">Admin Kullanıcısı Ekle</a>
+        <a href="/UserWeb/Ekle/" type="button" class="btn btn-success">Admin Kullanıcısı Ekle</a>
 
     </div>
     <script>
