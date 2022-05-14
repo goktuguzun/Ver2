@@ -96,7 +96,7 @@ namespace StokWeb.Controllers
             return View();
         }
 
-
+       /* 
         public ActionResult YeniStokGiris(StokTabloSatici s)
         {
             var stok = db.StokTabloSatici.Find(s.Id);
@@ -112,6 +112,32 @@ namespace StokWeb.Controllers
             var stok = db.StokTabloSatici.Find(id);
 
 
+        }*/
+        [HttpGet]
+        public ActionResult MevcutStok()
+        {
+            var degerler = db.StokTabloSatici.ToList();
+
+            return View(degerler);
+        }
+
+        [HttpGet]
+        public ActionResult MevcutStokGuncelle(int id)
+        {
+            var stok = db.StokTabloSatici.Find(id);
+            return View(stok);
+        }
+
+        [HttpPost]
+        public ActionResult MevcutStokGuncelle(StokTabloSatici s)
+        {
+            var stok = db.StokTabloSatici.Find(s.Id);
+            stok.KritikStok = s.KritikStok;
+            stok.StokKodu = s.StokKodu;
+            stok.StokAdi = s.StokAdi;
+            stok.KalanMiktar = s.KalanMiktar;
+            db.SaveChanges();
+            return RedirectToAction("MevcutStok");
         }
     }
 }
